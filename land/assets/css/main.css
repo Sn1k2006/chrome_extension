@@ -19,14 +19,15 @@ html,
 body {
   font-family: 'Almarai-Light', sans-serif;
   font-size: 12px;
-  line-height: 14px;
+  line-height: 16px;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
   color: #282828;
 }
-.d-flex {
-  display: flex;
+a:link, a:visited, a:focus {
+  outline: 0 !important;
+  box-shadow: none !important;
 }
 h2 {
   font-family: 'Almarai-Bold', sans-serif;
@@ -45,23 +46,26 @@ a:visited {
   text-decoration: none;
 }
 .container {
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   margin: 0 auto;
-  width: 310px;
-  box-shadow: 0 0 60px rgba(0, 0, 0, 0.08);
   border-radius: 4px;
-  background-color: #f9f9f9;
+  min-height: 100vh;
 }
-.modal-header {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 40px;
-  padding: 0 10px;
+  height: 60px;
   background-color: #ffffff;
 }
+
+.container.rtl .header, .container.rtl .header .d-flex,.container.rtl .select-visible,.container.rtl .select-hidden_item,.container.rtl .footer {
+  flex-direction: row-reverse;
+}
 .close {
-  padding: 0 0 0 10px;
+  padding: 0 10px;
   position: relative;
   cursor: pointer;
   color: #C8C8C8;
@@ -76,15 +80,17 @@ a:visited {
 .close:active {
   top: 1px;
 }
-.modal-content {
+.content {
+  display: flex;
+  flex-direction: column;
   padding: 24px 24px 32px; /*отступы сверху и снизу, сверху и слева*/
-  text-align: center;
+  align-items: center;
 }
 .logo-icon {
   width: auto;
-  height: 20px;
+  height: 25px;
 }
-.modal-content h2 {
+.content h2 {
   padding-top: 12px;
   padding-bottom: 32px;
 }
@@ -114,10 +120,6 @@ a:visited {
 .secondary-btn {
   background-color: #DCDCDC;
   color: #A0A0A0;
-}
-.footer {
-  display: flex;
-  justify-content: center;
 }
 .select {
   position: relative;
@@ -158,16 +160,33 @@ a:visited {
   left: 0;
 }
 .select-hidden_item {
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.04);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   padding: 8px;
 }
-.select-hidden_item:hover {
+.select-hidden_item.active {
   background-color: #A0A0A020;
+}
+.select-hidden_item:hover {
+  background-color: #A0A0A030;
 }
 .select.open .select-hidden {
   display: block;
+}
+.footer {
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  display: flex;
+}
+.footer a {
+  text-decoration: underline;
+  color: #A0A0A0;
+}
+.docs_wrap h4 {
+  font-family: 'Almarai-Bold', sans-serif;
+  font-size: 16px;
+  margin-top: 8px;
 }

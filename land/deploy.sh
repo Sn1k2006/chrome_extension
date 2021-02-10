@@ -1,0 +1,1 @@
+rsync -av --delete . -e "ssh -p 222" redstream@srv.redstream.by:aship && curl -X DELETE "https://api.cloudflare.com/client/v4/zones/fab8ad312542d24456f5571f39946653/purge_cache" -H "Authorization: Bearer GasWzDeExVYuMC8UPeKSxXzanLhkUlHd70S1aAav" -H "Content-Type:application/json" --data '{"purge_everything":true}'

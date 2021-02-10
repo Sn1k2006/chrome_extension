@@ -1,0 +1,182 @@
+@font-face { /*700*/
+  font-family: 'Almarai-Bold';
+  src: url('../fonts/almarai-bold-webfont.eot');
+  src: url('../fonts/almarai-bold-webfont.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/almarai-bold-webfont.woff') format('woff'),
+  url('../fonts/Almarai-Bold.ttf') format('truetype'),
+  url('../fonts/almarai-bold-webfont.svg#webfont') format('svg');
+}
+@font-face { /*300*/
+  font-family: 'Almarai-Light';
+  src: url('../fonts/almarai-light-webfont.eot');
+  src: url('../fonts/almarai-light-webfont.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/almarai-light-webfont.woff') format('woff'),
+  url('../fonts/Almarai-Light.ttf') format('truetype'),
+  url('../fonts/almarai-light-webfont.svg#webfont') format('svg');
+}
+
+html,
+body {
+  font-family: 'Almarai-Light', sans-serif;
+  font-size: 12px;
+  line-height: 14px;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  color: #282828;
+}
+.d-flex {
+  display: flex;
+}
+h2 {
+  font-family: 'Almarai-Bold', sans-serif;
+  font-size: 16px;
+  line-height: 18px;
+  margin: 0;
+  color: #282828;
+}
+p {
+  margin: 0;
+}
+a:link,
+a:visited {
+  color: #000000;
+  outline: 0;
+  text-decoration: none;
+}
+.container {
+  overflow: hidden;
+  margin: 0 auto;
+  width: 310px;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  background-color: #ffffff;
+}
+
+.container.rtl .modal-header, .container.rtl .modal-header .d-flex,.container.rtl .select-visible,.container.rtl .select-hidden_item {
+  flex-direction: row-reverse;
+}
+.close {
+  padding: 0 10px;
+  position: relative;
+  cursor: pointer;
+  color: #C8C8C8;
+  font-size: 16px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+.close:hover {
+  opacity: 0.9;
+}
+.close:active {
+  top: 1px;
+}
+.modal-content {
+  padding: 24px 24px 32px; /*отступы сверху и снизу, сверху и слева*/
+  text-align: center;
+}
+.logo {
+  padding: 0 10px;
+}
+.logo-icon {
+  width: auto;
+  height: 17px;
+}
+.modal-content h2 {
+  padding-top: 12px;
+  padding-bottom: 32px;
+}
+.btn {
+  display: flex;
+  font-family: 'Almarai-Bold', sans-serif;
+  margin: 0 8px;
+  position: relative;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  min-height: 36px;
+  border-radius: 4px;
+  padding: 0 14px;
+}
+.btn:hover {
+  opacity: 0.9;
+}
+.btn:active {
+  top: 1px;
+}
+.accent-btn {
+  background-color: #F9BA68;
+}
+.secondary-btn {
+  background-color: #DCDCDC;
+  color: #A0A0A0;
+}
+.footer {
+  display: flex;
+  justify-content: center;
+}
+.select {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.select-visible {
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.select-visible:hover {
+  background-color: #f9f9f9;
+}
+.select-img img {
+  width: 22px;
+  height: 22px;
+}
+.select-name {
+  text-transform: uppercase;
+  font-family: 'Almarai-Bold', sans-serif;
+  margin: 0 8px;
+}
+.select-arrow {
+  transition: all .3s ease;
+}
+.select.open .select-arrow{
+  transform: rotate(180deg);
+}
+.select-hidden {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  width: 100%;
+  top: 100%;
+  left: 0;
+}
+.select-hidden_item {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 8px;
+}
+.select-hidden_item.active {
+  background-color: #A0A0A020;
+}
+.select-hidden_item:hover {
+  background-color: #A0A0A030;
+}
+.select.open .select-hidden {
+  display: block;
+}
