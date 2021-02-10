@@ -1,7 +1,11 @@
 $(document).ready(function () {
   const closeIframe = () => {
     const dialog = document.querySelector("dialog");
-    if (dialog) dialog.close();
+    if (dialog) {
+      dialog.close();
+      dialog.remove();
+      setTimeout(showModal, 3600000);
+    }
   }
 
   const showModal = () => {
@@ -71,10 +75,8 @@ style="
   const hostname = window.location.hostname;
 
   if (host === 'www.amazon.ae' || hostname === 'www.amazon.ae') {
-    setTimeout(showModal, 1000)
+    setTimeout(showModal, 60000);
   }
-  $("html").click(function (e) {
-    closeIframe();
-  });
+  $("html").click(closeIframe);
 });
 
