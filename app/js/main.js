@@ -83,13 +83,12 @@ $(document).ready(function () {
     selectLanguage(ln);
   });
 
-  chrome.tabs.getSelected(null, function (tab) {
-    const url = tab.url;
-    const locale = getUrlVars(tab.url)?.language || '';
+  chrome.tabs?.getSelected(null, function (tab) {
+    const url = tab?.url || '';
+    const locale = getUrlVars(url)?.language || '';
     const lang = locale ? locale.split('_')[0] : 'en';
     const encoded = encodeURIComponent(url);
     $('.footer a').attr('href', `https://aship.space/go/?url=${encoded}`);
     selectLanguage(lang, true);
   });
-
 });
