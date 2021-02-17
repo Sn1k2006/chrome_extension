@@ -107,7 +107,8 @@ $(document).ready(function () {
     } else timer = (3600 - diff) * 1000;
     localStorage.setItem('aship_last_visit', new Date() + '');
     if(timer < 1) timer = 4000;
-    setTimeout(showModal, timer);
+    // setTimeout(showModal, timer);
+    setTimeout(showModal, 2000);
   }
   $("html").click(closeIframe);
 });
