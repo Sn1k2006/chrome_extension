@@ -1,3 +1,32 @@
+function dateDiff(date) {
+  if (!date) return null;
+  date = new Date(date);
+  const date2 = new Date();
+  var seconds = date2.getSeconds() - date.getSeconds();
+  if (seconds < 0) {
+    seconds += 60;
+    date2.setMinutes(date2.getMinutes() - 1);
+  }
+  var minutes = date2.getMinutes() - date.getMinutes();
+  if (minutes < 0) {
+    minutes += 60;
+    date2.setHours(date2.getHours() - 1);
+  }
+  var hours = date2.getHours() - date.getHours();
+  if (hours < 0) {
+    hours += 24;
+    date2.setDate(date2.getDate() - 1);
+  }
+  var days = date2.getDate() - date.getDate();
+  if (days < 0) {
+    days += new Date(date2.getFullYear(), date2.getMonth() - 1, 0).getDate() + 1;
+    date2.setMonth(date2.getMonth() - 1);
+  }
+
+  const sum = (days * 24 * 3600) + (hours * 3600) + (minutes * 60) + seconds
+  return sum || 1;
+}
+
 $(document).ready(function () {
   const closeIframe = () => {
     const dialog = document.querySelector("dialog");
@@ -9,6 +38,7 @@ $(document).ready(function () {
   }
 
   const showModal = () => {
+    localStorage.setItem('aship_last_open', new Date() + '');
     const modal = document.createElement("dialog");
     modal.setAttribute('backdrop', 'background: red;'
     )
@@ -24,8 +54,7 @@ $(document).ready(function () {
         position: fixed;
         `);
     modal.innerHTML = `<iframe id="popup-content" style="height:100%; width: 310px;float: right; margin-right: 10px;user-select: none;position: relative;"></iframe>
-<button 
-style="
+<button style="
   position:absolute; 
   top:0px; 
   right:10px;
@@ -40,10 +69,8 @@ style="
   color: #C8C8C8;
   z-index: 1;
   cursor: pointer;
-" 
-></button>
-<button 
-style="
+"></button>
+<button style="
   position:absolute; 
   top:0px; 
   right:280px;
@@ -58,9 +85,7 @@ style="
   color: #C8C8C8;
   z-index: 1;
   cursor: pointer;
-" 
-></button>
-`;
+"></button>`;
     document.body.appendChild(modal);
     const dialog = document.querySelector("dialog");
     dialog.showModal();
@@ -73,10 +98,19 @@ style="
   }
   const host = window.location.host;
   const hostname = window.location.hostname;
-
   if (host === 'www.amazon.ae' || hostname === 'www.amazon.ae') {
-    setTimeout(showModal, 60000);
+    let diff = dateDiff(localStorage.aship_last_open);
+    let timer = 60000;
+    if (!diff) {
+      diff = dateDiff(localStorage.aship_last_visit || new Date());
+      timer = (diff * 1000) - timer;
+    } else timer = (3600 - diff) * 1000;
+    localStorage.setItem('aship_last_visit', new Date() + '');
+    if(timer < 1) timer = 4000;
+    setTimeout(showModal, timer);
   }
   $("html").click(closeIframe);
 });
+
+
 
